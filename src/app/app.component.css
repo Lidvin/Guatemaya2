@@ -1,0 +1,13 @@
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+app-navbar {
+  z-index: 50;
+}
+
+app-slider {
+  margin-top: 64px; /* Adjust based on navbar height */
+  z-index: 10;
+}
