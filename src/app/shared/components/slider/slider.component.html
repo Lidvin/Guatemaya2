@@ -1,0 +1,83 @@
+<div class="relative w-full h-64 md:h-96 bg-gradient-to-r from-blue-200 to-purple-200 overflow-hidden">
+  <!-- Slide Content -->
+  <div class="relative w-full h-full flex transition-transform duration-500 ease-in-out" [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
+    <!-- Slide 1 -->
+    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
+      <div class="flex flex-col md:flex-row items-center justify-between p-4 w-full max-w-6xl mx-auto">
+        <!-- Left Section (Text and Discount) -->
+        <div class="text-center md:text-left">
+          <h2 class="text-2xl md:text-4xl font-bold text-gray-800">SAMSUNG</h2>
+          <h3 class="text-lg md:text-2xl text-gray-600">Galaxy Tab S10 FE</h3>
+          <p class="text-sm md:text-base text-gray-500">Diseño premium, y rendimiento fluido</p>
+          <div class="mt-2 bg-blue-500 text-white rounded-full w-24 h-24 flex items-center justify-center text-xl font-bold shadow-lg">
+            26% OFF
+          </div>
+          <p class="text-xs text-gray-500 mt-2">*Incluye S Pen + Book Cover</p>
+        </div>
+        <!-- Right Section (Image and Button) -->
+        <div class="relative mt-4 md:mt-0">
+          <img src="https://images.unsplash.com/photo-1626248801377-b641d757a1ef?q=80&w=2070&auto=format&fit=crop" alt="Tablet" class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-lg shadow-lg" />
+          <button class="absolute bottom-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-colors">
+            Clic Aquí
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
+      <div class="flex flex-col md:flex-row items-center justify-between p-4 w-full max-w-6xl mx-auto">
+        <div class="text-center md:text-left">
+          <h2 class="text-2xl md:text-4xl font-bold text-gray-800">APPLE</h2>
+          <h3 class="text-lg md:text-2xl text-gray-600">iPhone 14 Pro</h3>
+          <p class="text-sm md:text-base text-gray-500">Cámara avanzada, diseño elegante</p>
+
+          <div class="mt-2 bg-purple-500 text-white rounded-full w-24 h-24 flex items-center justify-center text-xl font-bold shadow-lg">
+            15% OFF
+          </div>
+          <p class="text-xs text-gray-500 mt-2">*Incluye cargador MagSafe</p>
+        </div>
+        <div class="relative mt-4 md:mt-0">
+          <img src="https://images.unsplash.com/photo-1663685006671-3adfb4d8e008?q=80&w=2070&auto=format&fit=crop" alt="iPhone" class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-lg shadow-lg" />
+          <button class="absolute bottom-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition-colors">
+            Clic Aquí
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="w-full h-full flex-shrink-0 flex items-center justify-center">
+      <div class="flex flex-col md:flex-row items-center justify-between p-4 w-full max-w-6xl mx-auto">
+        <div class="text-center md:text-left">
+          <h2 class="text-2xl md:text-4xl font-bold text-gray-800">SONY</h2>
+          <h3 class="text-lg md:text-2xl text-gray-600">PlayStation 5</h3>
+          <p class="text-sm md:text-base text-gray-500">Experiencia de juego inmersiva</p>
+          <div class="mt-2 bg-green-500 text-white rounded-full w-24 h-24 flex items-center justify-center text-xl font-bold shadow-lg">
+            10% OFF
+          </div>
+          <p class="text-xs text-gray-500 mt-2">*Incluye mando adicional</p>
+        </div>
+        <div class="relative mt-4 md:mt-0">
+          <img src="https://images.unsplash.com/photo-1606813907291-d6067b2f811f?q=80&w=2070&auto=format&fit=crop" alt="PlayStation" class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-lg shadow-lg" />
+          <button class="absolute bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition-colors">
+            Clic Aquí
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button (click)="prevSlide()" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700">
+    ←
+  </button>
+  <button (click)="nextSlide()" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full hover:bg-gray-700">
+    →
+  </button>
+
+  <!-- Dots Navigation Angled Indicators -->
+  <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+    <span *ngFor="let i of [0, 1, 2]" (click)="goToSlide(i)" [ngClass]="{'bg-blue-500': currentSlide === i, 'bg-gray-300': currentSlide !== i}" class="w-3 h-3 rounded-full cursor-pointer"></span>
+  </div>
+</div>
