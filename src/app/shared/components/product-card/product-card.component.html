@@ -1,0 +1,51 @@
+<p>product-card works!</p>
+<a [routerLink]="['/product', product().id]" class="block">
+  <div class="max-w-sm bg-blanco-tejido border border-terracota rounded-lg shadow hover:scale-105 transition-transform dark:bg-gray-800 dark:border-terracota">
+    <!-- Imagen del producto -->
+    <picture>
+      <img
+        class="rounded-t-lg h-60 w-full object-contain object-center"
+        [src]="product().image"
+        alt="{{ product().title }}"
+      />
+    </picture>
+
+    <!-- Contenido -->
+    <div class="p-5">
+      <h5 class="mb-2 text-xl font-bold tracking-tight text-atitlan-blue dark:text-white line-clamp-1">
+        {{ product().title }}
+      </h5>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-3">
+        {{ product().description }}
+      </p>
+
+      <!-- Bot�n de agregar al carrito -->
+      <div class="flex justify-end my-4">
+        <button
+          class="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-center text-white bg-selva-green rounded-lg hover:bg-selva-green/80 focus:ring-4 focus:outline-none focus:ring-maya-red/50 dark:bg-selva-green dark:hover:bg-selva-green/80 dark:focus:ring-maya-red/50"
+          (click)="add($event)"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-cart"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+            <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+            <path d="M17 17h-11v-14h-2" />
+            <path d="M6 5l14 1l-1 7h-13" />
+          </svg>
+          Agregar al carrito
+        </button>
+      </div>
+    </div>
+  </div>
+</a>
