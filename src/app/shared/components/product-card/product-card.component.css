@@ -1,0 +1,18 @@
+
+:root {
+  color-scheme: blue light;
+  --maya-red: #C53030;
+  --atitlan-blue: #2C5282;
+  --selva-green: #2F855A;
+  --sol-yellow: #D69E2E;
+  --terracota: #8B4513;
+  --blanco-tejido: #F7FAFC;
+}
+
+.header-placeholder {
+  height: auto; /* El header ocupa su altura natural */
+}
+
+main {
+  padding-top: calc(4rem + env(safe-area-inset-top)); /* Ajusta seg�n la altura del header */
+}

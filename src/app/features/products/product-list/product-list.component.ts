@@ -1,31 +1,26 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, HostListener, inject, input } from '@angular/core';
 import { ProductsSateService } from '../../shared/data-acces/products-state.service';
-import { ProductCardComponent } from '../../../shared/components/product-card/product-card.component';
 import { CartStateService } from '../../shared/data-acces/cart-state.service';
-
 import { Product } from '../../../core/models/product.model';
+import { ProductCardComponent } from '../../../shared/components/product-card/product-card.component';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
+  imports: [ProductCardComponent],
   templateUrl: './product-list.component.html',
   providers: [ProductsSateService],
 })
 export default class ProductListComponent {
-  
-  productsState = inject(ProductsSateService);
-
-
-
-
+productsState = inject(ProductsSateService);
   cartState = inject(CartStateService).state;
   private isLoading = false;
 
-  @HostListener('window:scroll', ['$event'])
+      @HostListener('window:scroll', ['$event'])
   onScroll() {
-  //  if (this.isNearBottom() && !this.isLoading && this.productsState.state().hasMore ) {
-    //  this.loadMoreProducts();
-  //  }
+    if (this.isNearBottom() && !this.isLoading && this.productsState.state().hasMore ) {
+      this.loadMoreProducts();
+    }
   }
 
   private isNearBottom(): boolean {
@@ -37,8 +32,8 @@ export default class ProductListComponent {
 
   private loadMoreProducts() {
     this.isLoading = true;
-   // const nextPage = this.productsState.state().page + 1;
-   // this.productsState.changePage$.next(nextPage);
+    const nextPage = this.productsState.state().page + 1;
+    this.productsState.changePage$.next(nextPage);
     
     // Esperamos a que el estado se actualice
     setTimeout(() => {
@@ -46,19 +41,10 @@ export default class ProductListComponent {
     }, 1000); // Ajusta este tiempo seg�n tu API real
   }
 
-  addToCart(product: Product) {
-  }
-
-
-
-
-  /*
-  addToCart(product: Product) {
+    addToCart(product: Product) {
     this.cartState.add({
       product,
       quantity: 1,
     });
   }
-
-  */
 }
