@@ -1,6 +1,9 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { Product } from '../../../core/models/product.model';
 import { RouterLink } from '@angular/router';
+import { ProductsService } from '../../../features/shared/data-acces/products.service';
+import { ProductsSateService } from '../../../features/shared/data-acces/products-state.service';
+import { CartStateService } from '../../../features/shared/data-acces/cart-state.service';
 
 @Component({
   selector: 'app-product-card',
@@ -10,13 +13,7 @@ import { RouterLink } from '@angular/router';
   styles: ``,
 })
 export class ProductCardComponent {
-  product = input.required<Product>();
-
-  addToCart = output<Product>();
-
-  add(event: Event) {
-    event.stopPropagation();
-    event.preventDefault();
-    this.addToCart.emit(this.product());
-  }
+productsState = inject(ProductsSateService);
+  cartState = inject(CartStateService).state;
+  private isLoading = false;
 }

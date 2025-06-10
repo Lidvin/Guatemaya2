@@ -1,26 +1,21 @@
 import { Injectable, inject } from '@angular/core';
-//import { Product } from '../../../core/models/product.model';
+import { Product } from '../../../core/models/product.model';
 import { signalSlice } from 'ngxtension/signal-slice';
 import { Signal } from '@angular/core';
 import { ProductsService } from './products.service';
 import { Subject, catchError, map, of, startWith, switchMap } from 'rxjs';
 
 interface State {
- // products: Product[];
+  products: Product[];
   status: 'loading' | 'success' | 'error';
   page: number;
   hasMore: boolean;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
-
+@Injectable()
 export class ProductsSateService {
-  
- // private productsService = inject(ProductsService);
+  private productsService = inject(ProductsService);
 
-  /*
   private initialState: State = {
     products: [],
     status: 'loading' as const,
@@ -29,7 +24,7 @@ export class ProductsSateService {
   };
 
   changePage$ = new Subject<number>();
-/*
+
   loadProducts$ = this.changePage$.pipe(
     startWith(1),
     switchMap((page) => this.productsService.getProducts(page)),
@@ -46,9 +41,7 @@ export class ProductsSateService {
       });
     }),
   );
-*/
 
-/*
   state: Signal<State> = signalSlice({
     initialState: this.initialState,
     sources: [
@@ -71,5 +64,4 @@ export class ProductsSateService {
       ),
     ],
   });
-  */
 }
