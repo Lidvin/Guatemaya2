@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { SliderComponent } from './components/slider/slider.component';
-import { ProductsService } from '../shared/data-acces/products.service';
-import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
+import {SliderComponent} from './components/slider/slider.component';
 import ProductListComponent from '../products/product-list/product-list.component';
 
 @Component({
@@ -10,8 +8,10 @@ import ProductListComponent from '../products/product-list/product-list.componen
   imports: [SliderComponent,ProductListComponent], 
   providers: [], 
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
+ngOnInit(): void {
+    console.log('HomeComponent inicializado');
+  }
 }
