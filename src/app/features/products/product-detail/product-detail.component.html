@@ -1,34 +1,70 @@
-<p>product-detail works!</p>
-
+@if (productDetailState.status() === "loading") {
   <div class="loading text-atitlan-blue text-center py-8">Cargando...</div>
-
+} @else {
   <section class="py-8 bg-blanco-tejido md:py-16 dark:bg-gray-900 antialiased">
     <div class="max-w-screen-xl px-4 mx-auto 2xl:px-0">
       <div class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
         <!-- Imagen del producto -->
         <div class="shrink-0 max-w-md lg:max-w-lg mx-auto">
           <img
-            class="w-full rounded-lg border border-terracota shadow-md"
-       
+            class="w-80 h-auto rounded-lg border border-terracota shadow-md mx-auto"
+            [src]="productDetailState.product()?.image"
+            [alt]="productDetailState.product()?.title"
           />
+          <div class="flex justify-center mt-4 space-x-2">
+            <img
+              class="w-16 h-16 rounded-lg border border-terracota shadow-md cursor-pointer"
+              [src]="productDetailState.product()?.image"
+              
+            />
+            <img
+              class="w-16 h-16 rounded-lg border border-terracota shadow-md cursor-pointer"
+              src="path/to/thumbnail2.jpg"
+              (click)="changeImage('path/to/thumbnail2.jpg')"
+            />
+            <img
+              class="w-16 h-16 rounded-lg border border-terracota shadow-md cursor-pointer"
+              src="path/to/thumbnail3.jpg"
+              (click)="changeImage('path/to/thumbnail3.jpg')"
+            />
+          </div>
         </div>
 
         <!-- Detalles del producto -->
         <div class="mt-6 sm:mt-8 lg:mt-0">
           <h1 class="text-xl font-semibold text-atitlan-blue sm:text-2xl dark:text-white">
-      
+            {{ productDetailState.product()?.title }}
           </h1>
-          <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
-            <p class="text-2xl font-extrabold text-maya-red sm:text-3xl dark:text-sol-yellow">
-   
-            </p>
+          <div class="mt-4 text-gray-600 dark:text-gray-400">
+            <p>Screen Size: {{ productDetailState.product() }}</p>
+            <p>Resolution: {{ productDetailState.product()}}</p>
+            <p>Refresh Rate: {{ productDetailState.product() }}</p>
+            <p>Aspect Ratio: {{ productDetailState.product() }}</p>
+            <p>Screen Surface: {{ productDetailState.product() }}</p>
           </div>
 
-          <!-- Bot�n de agregar al carrito -->
+          <div class="mt-4 sm:items-center sm:gap-4 sm:flex">
+            <p class="text-2xl font-extrabold text-maya-red sm:text-3xl dark:text-sol-yellow">
+              ${{ productDetailState.product()?.price }}
+            </p>
+            <p class="text-gray-600 dark:text-gray-400 ml-4">
+              List Price: <s>${{ productDetailState.product() }}</s>
+            </p>
+            <p class="text-green-600">In Stock</p>
+          </div>
+
+          <div class="mt-2">
+            <p class="text-sm text-gray-600">
+              Ships to Guatemala. Delivery: Friday, June 27. Order within 25 hrs 57 mins
+            </p>
+            <p class="text-sm text-gray-600">Shipping & Import Fees: $17.50</p>
+          </div>
+
+          <!-- Botones de compra -->
           <div class="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8">
             <button
-              title="Agregar al carrito"
-              class="text-white mt-4 sm:mt-0 bg-selva-green hover:bg-selva-green/80 focus:ring-4 focus:ring-maya-red/50 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-selva-green dark:hover:bg-selva-green/80 dark:focus:ring-maya-red/50 flex items-center justify-center transition-colors"
+              title="Add to Cart"
+              class="text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:ring-maya-red/50 font-medium rounded-lg text-sm px-5 py-2.5 flex items-center justify-center transition-colors mr-2"
               role="button"
               (click)="addToCart()"
             >
@@ -49,18 +85,45 @@
                   d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6"
                 />
               </svg>
-              Agregar al carrito
+              Add to Cart
             </button>
+            <button
+              title="Buy Now"
+              class="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-maya-red/50 font-medium rounded-lg text-sm px-5 py-2.5 flex items-center justify-center transition-colors"
+              role="button"
+              (click)="buyNow()"
+            >
+              Buy Now
+            </button>
+            <select class="ml-4 p-2 border rounded">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
           </div>
 
           <!-- Separador -->
           <hr class="my-6 md:my-8 border-terracota dark:border-gray-800" />
 
-          <!-- Descripci�n -->
-          <p class="mb-6 text-gray-600 dark:text-gray-400">
-       
-          </p>
+          <!-- Descripción -->
+          <div class="mt-4">
+            <h3 class="text-lg font-semibold text-atitlan-blue">About this item</h3>
+            <ul class="list-disc list-inside text-gray-600 dark:text-gray-400">
+              <li>23.8" Full HD (1920 x 1080) Widescreen VA Monitor</li>
+              <li>Refresh Rate: 165Hz | Response Time: 1ms (VRB) | Pixel Pitch: 0.275mm</li>
+              <li>Zero-Frame Design | HDR Ready</li>
+              <li>VESA mounting compliant (100 x 100mm) Ergonomic tilt: -5° to 15°</li>
+              <li>Ports: 1 x Display Port 1.2 and 2 x HDMI 2.0 (HDMI Cable Included)</li>
+            </ul>
+          </div>
+
+          <div class="mt-4 text-sm text-gray-600 dark:text-gray-400">
+            <p>Brand: {{ productDetailState.product() }}</p>
+            <p>Check Compatibility: <a href="#" class="text-blue-500">Choose your product</a></p>
+            <p>Product voltage: 120 volts (This product is compatible with 120 volts and might require a converter when used outside the United States.)</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
+}

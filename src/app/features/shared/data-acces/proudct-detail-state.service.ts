@@ -18,7 +18,7 @@ export class ProductDetailSateService {
     status: 'loading' as const,
   };
 
-  /*
+  
   state = signalSlice({
     initialState: this.initialState,
     actionSources: {
@@ -29,6 +29,6 @@ export class ProductDetailSateService {
         ),
     },
   });
-*/
+
 
 }

@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, input, output } from '@angular/core';
+import { Component,input, output } from '@angular/core';
 import { Product } from '../../../core/models/product.model';
 import { RouterLink } from '@angular/router';
 
