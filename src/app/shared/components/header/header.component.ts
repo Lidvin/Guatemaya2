@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { CartStateService } from '../../data-acces/cart-state.service';
+import { CommonModule } from '@angular/common';
+import { CartStateService } from '../.././../core/services/cart-state.service';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
   imports: [CommonModule,RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
+
 })
 export class HeaderComponent {
   isMenuOpen = false;

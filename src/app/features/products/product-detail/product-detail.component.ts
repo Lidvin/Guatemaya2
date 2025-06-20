@@ -1,13 +1,12 @@
 import { Component, effect, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; // Importa ActivatedRoute
 import { ProductDetailSateService } from '../../shared/data-acces/proudct-detail-state.service';
-import { CurrencyPipe } from '@angular/common';
 import { CartStateService } from '../../shared/data-acces/cart-state.service';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CurrencyPipe],
+  imports: [],
   templateUrl: './product-detail.component.html',
   providers: [ProductDetailSateService],
 })

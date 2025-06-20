@@ -15,9 +15,13 @@ export class ProductCardComponent {
   addToCart = output<Product>();
 
   add(event: Event) {
+    console.log('Add to cart clicked');
     event.stopPropagation();
     event.preventDefault();
     this.addToCart.emit(this.product());
+
+    
+
   }
   
 }
